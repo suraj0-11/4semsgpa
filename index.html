@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>3rd sem SGPA Calculator</title>
+	<style>
+		html, body {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #202020;
+			color: #fff;
+			font-family: Tahoma, sans-serif;
+		}
+
+		body {
+			background: url('metro.jpg?grayscale&blur=2') no-repeat center center fixed;
+			background-size: cover;
+		}
+
+		h1 {
+			text-align: center;
+			font-size: 24px;
+			font-weight: 700;
+			line-height: 26.4px;
+		}
+
+		form {
+			margin: 0 auto;
+			max-width: 500px;
+			padding: 20px;
+			background-color: rgba(0, 0, 0, 0.6);
+			border-radius: 5px;
+		}
+
+		form label {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		form input[type="number"] {
+			display: block;
+			margin-bottom: 20px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			width: 100%;
+		}
+
+		form input[type="button"] {
+			margin: 20px auto 0;
+			padding: 10px 20px;
+			background-color: #4CAF50;
+			border: none;
+			border-radius: 5px;
+			color: #fff;
+			font-size: 16px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		form input[type="button"]:hover {
+			background-color: #3e8e41;
+		}
+
+		form input[type="text"] {
+			display: block;
+			margin-top: 20px;
+			padding: 10px;
+			border: none;
+			border-radius: 5px;
+			font-size: 16px;
+			width: 100%;
+		}
+
+		.instagram-link {
+			display: inline-block;
+			position: relative;
+			font-family: Arial, sans-serif;
+			text-transform: uppercase;
+			font-weight: bold;
+			font-size: 20px;
+		}
+
+		.instagram-link a {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-decoration: none;
+		}
+
+		.instagram-logo {
+			height: 50px;
+			margin-right: 10px;
+		}
+
+		.instagram-name {
+			color: #ffffff;
+			text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.7);
+		}
+
+		@media (max-width: 480px) {
+			.instagram-link {
+				font-size: 16px;
+			}
+
+			.instagram-logo {
+				height: 40px;
+			}
+
+			.instagram-name {
+				font-size: 18px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<h1>3rd sem ISE SGPA Calculator</h1>
+	<form>
+		<label for="dsa">DAA:</label>
+		<input type="number" id="dsa" name="dsa" min="0" max="100" required><br><br>
+
+		<label for="co">OS:</label>
+		<input type="number" id="co" name="co" min="0" max="100" required><br><br>
+
+		<label for="ade">MES:</label>
+		<input type="number" id="ade" name="ade" min="0" max="100" required><br><br>
+
+		<label for="math">MATH:</label>
+		<input type="number" id="math" name="math" min="0" max="100" required><br><br>
+
+		<label for="bio">BIO:</label>
+		<input type="number" id="bio" name="bio" min="0" max="100" required><br><br>
+
+		<label for="java">PYTHON:</label>
+		<input type="number" id="java" name="java" min="0" max="100" required><br><br>
+
+		<label for="mo">WEB:</label>
+		<input type="number" id="mo" name="mo" min="0" max="100" required><br><br>
+
+		<label for="scr">CIP:</label>
+		<input type="number" id="scr" name="scr" min="0" max="100" required><br><br>
+
+		<label for="kan">UHV:</label>
+		<input type="number" id="kan" name="kan" min="0" max="100" required><br><br>
+
+		<label for="int">INTERN:</label>
+		<input type="number" id="int" name="int" min="0" max="100" required><br><br>
+
+		<input type="button" value="Calculate CGPA" onclick="calculateCGPA()"><br><br>
+
+		<label for="cgpa">CGPA:</label>
+		<input type="text" id="cgpa" name="cgpa" readonly>
+	</form>
+
+	<script>
+		function calculateCGPA() {
+			var dsaMarks = parseInt(document.getElementById("dsa").value);
+			var coMarks = parseInt(document.getElementById("co").value);
+			var adeMarks = parseInt(document.getElementById("ade").value);
+			var mathMarks = parseInt(document.getElementById("math").value);
+			var bioMarks = parseInt(document.getElementById("bio").value);
+			var javaMarks = parseInt(document.getElementById("java").value);
+			var moMarks = parseInt(document.getElementById("mo").value);
+			var scrMarks = parseInt(document.getElementById("scr").value);
+			var kanMarks = parseInt(document.getElementById("kan").value);
+			var intMarks = parseInt(document.getElementById("int").value);
+
+			var totalCredits = 22;
+			var totalGradePoints = 0;
+
+			totalGradePoints += getGradePoints(dsaMarks) * 4;
+			totalGradePoints += getGradePoints(coMarks) * 3;
+			totalGradePoints += getGradePoints(adeMarks) * 4;
+			totalGradePoints += getGradePoints(mathMarks) * 3;
+			totalGradePoints += getGradePoints(bioMarks) * 3;
+			totalGradePoints += getGradePoints(javaMarks) * 1;
+			totalGradePoints += getGradePoints(moMarks) * 1;
+			totalGradePoints += getGradePoints(scrMarks) * 1;
+			totalGradePoints += getGradePoints(kanMarks) * 1;
+			totalGradePoints += getGradePoints(intMarks) * 1;
+
+			var cgpa = (totalGradePoints / totalCredits).toFixed(2);
+			document.getElementById("cgpa").value = cgpa;
+		}
+
+		function getGradePoints(marks) {
+			if (marks >= 90) {
+				return 10;
+			} else if (marks >= 80) {
+				return 9;
+			} else if (marks >= 70) {
+				return 8;
+			} else if (marks >= 60) {
+				return 7;
+			} else if (marks >= 50) {
+				return 6;
+			} else if (marks >= 45) {
+				return 5;
+			} else if (marks >= 40) {
+				return 4;
+			} else {
+				return 0;
+			}
+		}
+	</script>
+</body>
+</html>
