@@ -78,7 +78,7 @@
         <label for="bio">Biology:</label>
         <input type="number" id="bio" required><br>
 
-        <label for="java">Phython :</label>
+        <label for="java">Python :</label>
         <input type="number" id="java" required><br>
 
         <label for="mo">WEB :</label>
@@ -89,9 +89,6 @@
 
         <label for="kan">UHV :</label>
         <input type="number" id="kan" required><br>
-
-        <label for="int">Internship:</label>
-        <input type="number" id="int" required><br>
 
         <button type="button" onclick="calculateCGPA()">Calculate CGPA</button>
     </form>
@@ -112,9 +109,8 @@
             var moMarks = parseInt(document.getElementById("mo").value);
             var scrMarks = parseInt(document.getElementById("scr").value);
             var kanMarks = parseInt(document.getElementById("kan").value);
-            var intMarks = parseInt(document.getElementById("int").value);
 
-            var totalCredits = 21;
+            var totalCredits = 20;
             var totalGradePoints = 0;
 
             totalGradePoints += getGradePoints(dsaMarks) * 4;
@@ -126,7 +122,6 @@
             totalGradePoints += getGradePoints(moMarks) * 1;
             totalGradePoints += getGradePoints(scrMarks) * 1;
             totalGradePoints += getGradePoints(kanMarks) * 1;
-            totalGradePoints += getGradePoints(intMarks) * 1;
 
             var cgpa = (totalGradePoints / totalCredits).toFixed(2);
             document.getElementById("cgpa").value = cgpa;
