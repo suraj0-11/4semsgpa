@@ -90,6 +90,9 @@
         <label for="kan">UHV :</label>
         <input type="number" id="kan" required><br>
 
+        <label for="kan">INT :</label>
+        <input type="number" id="int" required><br>
+
         <button type="button" onclick="calculateCGPA()">Calculate CGPA</button>
     </form>
 
@@ -109,19 +112,21 @@
             var moMarks = parseInt(document.getElementById("mo").value);
             var scrMarks = parseInt(document.getElementById("scr").value);
             var kanMarks = parseInt(document.getElementById("kan").value);
+            var intMarks = parseInt(document.getElementById("kan").value);
 
-            var totalCredits = 20;
+            var totalCredits = 22;
             var totalGradePoints = 0;
 
             totalGradePoints += getGradePoints(dsaMarks) * 4;
             totalGradePoints += getGradePoints(coMarks) * 3;
             totalGradePoints += getGradePoints(adeMarks) * 4;
             totalGradePoints += getGradePoints(mathMarks) * 3;
-            totalGradePoints += getGradePoints(bioMarks) * 2;
+            totalGradePoints += getGradePoints(bioMarks) * 3;
             totalGradePoints += getGradePoints(javaMarks) * 1;
             totalGradePoints += getGradePoints(moMarks) * 1;
             totalGradePoints += getGradePoints(scrMarks) * 1;
             totalGradePoints += getGradePoints(kanMarks) * 1;
+            totalGradePoints += getGradePoints(intMarks) * 1;
 
             var cgpa = (totalGradePoints / totalCredits).toFixed(2);
             document.getElementById("cgpa").value = cgpa;
